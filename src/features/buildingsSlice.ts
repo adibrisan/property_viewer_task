@@ -1,25 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type building = {
-  id: number;
-  name: string;
-  street: string;
-  number: string;
-  postalCode: string;
-  city: string;
-  country: string;
-  price: number;
-  description: string;
-  coordinates: { latitude: number; longitude: number };
-  color: string;
-};
+import mockedBuildings from '../data/buildings.json';
 
 interface BuildingsState {
   buildings: building[];
 }
 
 const initialState: BuildingsState = {
-  buildings: [],
+  buildings: mockedBuildings,
 };
 
 export const buildingsSlice = createSlice({

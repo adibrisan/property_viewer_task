@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, ViewStateChangeEvent } from 'react-map-gl';
 import { useSelector } from 'react-redux';
+import { Button } from 'antd';
+import { HomeFilled } from '@ant-design/icons';
 
 import { RootState } from '../store';
+
+import BuildingFormModal from './BuildingFormModal';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -11,15 +15,16 @@ const MapDisplay = () => {
     (state: RootState) => state.buildings.buildings
   );
   const [viewState, setViewState] = useState({
-    latitude: 40.7128,
-    longitude: -74.006,
+    latitude: 45.760696,
+    longitude: 21.226788,
     zoom: 10,
   });
+  const [isOpenBuildingModal, setIsOpenBuildingModal] = useState(false);
 
   return (
     <ReactMapGL
       {...viewState}
-      onMove={event => setViewState(event.viewState)}
+      onMove={(event: ViewStateChangeEvent) => setViewState(event.viewState)}
       style={{ width: '100%', height: '100vh' }}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       mapStyle="mapbox://styles/adrianbrisan/cm16fsas2020b01qu9lyv01ar"
@@ -31,17 +36,32 @@ const MapDisplay = () => {
           longitude={building.coordinates.longitude}
           offset={[0, -10]}
         >
-          <div
+          <Button
+            onClick={() => setIsOpenBuildingModal(true)}
             style={{
-              backgroundColor: building.color,
-              padding: '10px',
-              borderRadius: '50%',
+              background: 'transparent',
+              border: 'none',
+              boxShadow: 'none',
+              padding: 0,
+              height: 'auto',
+              lineHeight: 'normal',
+              fontSize: 'inherit',
+              color: `black`,
+              cursor: 'pointer',
             }}
-          >
-            {building.name}
-          </div>
+            icon={
+              <HomeFilled
+                style={{ fontSize: '26px', color: `${building.color}` }}
+              />
+            }
+          />
         </Marker>
       ))}
+      <BuildingFormModal
+        open={isOpenBuildingModal}
+        handleCancel={() => {}}
+        handleOk={() => {}}
+      />
     </ReactMapGL>
   );
 };

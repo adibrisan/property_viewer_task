@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Central Park Apartments",
+    "street": "Bulevardul Revoluției",
+    "number": "25",
+    "postalCode": "300085",
+    "city": "Timisoara",
+    "country": "Romania",
+    "price": 200000,
+    "description": "Modern apartments in the heart of the city, close to all amenities.",
+    "coordinates": {
+      "latitude": 45.7489,
+      "longitude": 21.2087
+    },
+    "color": "#FF5733"
+  },
+  {
+    "id": 2,
+    "name": "Timisoara Business Center",
+    "street": "Strada Eugeniu de Savoya",
+    "number": "10",
+    "postalCode": "300085",
+    "city": "Timisoara",
+    "country": "Romania",
+    "price": 350000,
+    "description": "Prime office space in a modern business center with easy access to public transport.",
+    "coordinates": {
+      "latitude": 45.7495,
+      "longitude": 21.2194
+    },
+    "color": "#33FF57"
+  },
+  {
+    "id": 3,
+    "name": "Villa Victoria",
+    "street": "Strada Ion Ionescu de la Brad",
+    "number": "18",
+    "postalCode": "300086",
+    "city": "Timisoara",
+    "country": "Romania",
+    "price": 450000,
+    "description": "Elegant villa with a spacious garden, ideal for families.",
+    "coordinates": {
+      "latitude": 45.75,
+      "longitude": 21.21
+    },
+    "color": "#337FFF"
+  },
+  {
+    "id": 4,
+    "name": "Timisoara Shopping Mall",
+    "street": "Bulevardul Take Ionescu",
+    "number": "42",
+    "postalCode": "300086",
+    "city": "Timisoara",
+    "country": "Romania",
+    "price": 600000,
+    "description": "Large shopping mall with various retail and dining options.",
+    "coordinates": {
+      "latitude": 45.7472,
+      "longitude": 21.221
+    },
+    "color": "#F3C12D"
+  },
+  {
+    "id": 5,
+    "name": "Historic Mansion",
+    "street": "Strada Aurelianus",
+    "number": "5",
+    "postalCode": "300087",
+    "city": "Timisoara",
+    "country": "Romania",
+    "price": 750000,
+    "description": "Beautifully preserved historic mansion with classic architecture.",
+    "coordinates": {
+      "latitude": 45.749,
+      "longitude": 21.2165
+    },
+    "color": "#D24D57"
+  }
+]

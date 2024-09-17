@@ -1,6 +1,5 @@
 import { Layout, Tabs } from 'antd';
 
-import BuildingForm from './components/BuildingForm';
 import BuildingList from './components/BuildingList';
 import BuildingsMap from './components/BuildingsMap';
 
@@ -13,9 +12,6 @@ const App = () => {
     <Layout>
       <Content>
         <Tabs defaultActiveKey="1">
-          <Tabs.TabPane tab="Add Building" key="1">
-            <BuildingForm />
-          </Tabs.TabPane>
           <Tabs.TabPane tab="Building List" key="2">
             <BuildingList />
           </Tabs.TabPane>
