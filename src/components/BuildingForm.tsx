@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   Alert,
   Row,
@@ -39,9 +38,9 @@ const BuildingForm = ({
     setOpen(false);
   };
 
-  useEffect(() => {
-    return form.setFieldsValue(selectedBuilding);
-  }, []);
+  // useEffect(() => {
+  //   return form.setFieldsValue(selectedBuilding);
+  // }, []);
 
   if (!selectedBuilding && editMode) {
     return <Alert message="Error Text" type="error" closable={true} banner />;
