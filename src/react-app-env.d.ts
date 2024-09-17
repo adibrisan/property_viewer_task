@@ -1,5 +1,7 @@
 /// <reference types="react-scripts" />
 
+declare module '*.css';
+
 type building = {
   id: number | string;
   name: string;

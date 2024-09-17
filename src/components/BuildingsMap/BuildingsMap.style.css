@@ -1,0 +1,11 @@
+.markerBtn {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+  line-height: normal;
+  font-size: inherit;
+  color: black;
+  cursor: pointer;
+}

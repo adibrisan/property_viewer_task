@@ -1,7 +1,7 @@
 import { Layout, Tabs } from 'antd';
 
 import BuildingList from './components/BuildingList';
-import BuildingsMap from './components/BuildingsMap';
+import BuildingsMap from './components/BuildingsMap/BuildingsMap';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 

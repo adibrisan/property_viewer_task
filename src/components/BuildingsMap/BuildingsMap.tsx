@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { Button, Modal } from 'antd';
 import { HomeFilled } from '@ant-design/icons';
 
-import { RootState } from '../store';
+import { RootState } from '../../store';
+import BuildingForm from '../BuildingForm';
 
-import BuildingForm from './BuildingForm';
-
+import styles from './BuildingsMap.style.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MapDisplay = () => {
@@ -38,20 +38,11 @@ const MapDisplay = () => {
           offset={[0, -10]}
         >
           <Button
+            className={styles.markerBtn}
+            style={{ backgroundColor: 'transparent', border: 'none' }}
             onClick={() => {
               setIsOpenBuildingModal(true);
               setSelectedBuilding(building);
-            }}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              boxShadow: 'none',
-              padding: 0,
-              height: 'auto',
-              lineHeight: 'normal',
-              fontSize: 'inherit',
-              color: `black`,
-              cursor: 'pointer',
             }}
             icon={
               <HomeFilled
