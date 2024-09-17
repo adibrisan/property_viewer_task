@@ -5,7 +5,7 @@ import { RootState } from '../store';
 
 const BuildingList = () => {
   const buildings = useSelector(
-    (state: RootState) => state.buildings.buildings
+    (state: RootState) => state.buildingsReducer.buildings
   );
 
   return (

@@ -4,7 +4,7 @@ import buildingsReducer from './features/buildingsSlice';
 
 export const store = configureStore({
   reducer: {
-    buildings: buildingsReducer,
+    buildingsReducer,
   },
 });
 
