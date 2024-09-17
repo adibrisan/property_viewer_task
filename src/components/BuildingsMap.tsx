@@ -59,8 +59,7 @@ const MapDisplay = () => {
       ))}
       <BuildingFormModal
         open={isOpenBuildingModal}
-        handleCancel={() => {}}
-        handleOk={() => {}}
+        setOpen={setIsOpenBuildingModal}
       />
     </ReactMapGL>
   );
