@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+Welcome to altametrics app code challenge! This challenge was done by Alexandru-Adrian Brisan.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To install the app dependencies run
+  npm install
 
-## Available Scripts
+1. Run the frontend app:
+   npm start
 
-In the project directory, you can run:
+2. Run Jest unit test
+   npm test
 
-### `npm start`
+OVERVIEW OF THE APP
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The Property viewr app has two tabs: Map View and Building List.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+MAP VIEW 
 
-### `npm test`
+Each marker (house icon) on the map is clickable and will open a form where you can edit the building's data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A new building can bee added with bottom-right button.
 
-### `npm run build`
+![Screenshot 2024-09-18 at 22 09 22](https://github.com/user-attachments/assets/27292eba-a541-497b-9c42-bc6554341717)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Building List
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Here we can see a simple list a few details of each building from our portofolio.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The pen icon let's you edit the selected building.
 
-### `npm run eject`
+![Screenshot 2024-09-18 at 22 10 49](https://github.com/user-attachments/assets/14d3aa03-4212-490d-b52e-cfc68e3c3c62)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Up in the right corner, there is a search input where you can search after a building name.
