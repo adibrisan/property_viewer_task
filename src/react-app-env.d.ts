@@ -1,6 +1,7 @@
 /// <reference types="react-scripts" />
 
 declare module '*.css';
+declare module 'uuid';
 
 type building = {
   id: number | string;

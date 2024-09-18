@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import {
   Alert,
   Row,
@@ -12,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { POSTAL_CODE_PATTERN } from '../utils/appConstants';
-import { updateBuilding } from '../features/buildingsSlice';
+import { addBuilding, updateBuilding } from '../features/buildingsSlice';
 import { getCoordinatesForAddress } from '../utils/helper';
 import { RootState } from '../store';
 import { setEditFormMode } from '../features/formModeSlice';
@@ -43,7 +44,11 @@ const BuildingForm = ({
     if (coordinatesResult) {
       const { latitude, longitude } = coordinatesResult;
       values = { ...values, coordinates: { latitude, longitude } };
-      dispatch(updateBuilding({ ...values, id: selectedBuilding?.id ?? '' }));
+      if (editMode) {
+        dispatch(updateBuilding({ ...values, id: selectedBuilding?.id ?? '' }));
+      } else {
+        dispatch(addBuilding({ ...values, id: uuidv4() }));
+      }
     }
     form.resetFields();
     closeBuildingModal();

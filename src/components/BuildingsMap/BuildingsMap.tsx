@@ -16,6 +16,7 @@ const MapDisplay = () => {
   const buildings = useSelector(
     (state: RootState) => state.buildingsReducer.buildings
   );
+
   const [viewState, setViewState] = useState({
     latitude: 45.760696,
     longitude: 21.226788,
