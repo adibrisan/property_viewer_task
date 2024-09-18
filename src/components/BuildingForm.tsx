@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Alert,
   Row,
@@ -14,6 +15,7 @@ import { POSTAL_CODE_PATTERN } from '../utils/appConstants';
 import { updateBuilding } from '../features/buildingsSlice';
 import { getCoordinatesForAddress } from '../utils/helper';
 import { RootState } from '../store';
+import { setEditFormMode } from '../features/formModeSlice';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -24,7 +26,7 @@ interface IBuildingForm {
 }
 
 const BuildingForm = ({
-  editMode = false,
+  editMode = true,
   closeBuildingModal,
 }: IBuildingForm) => {
   const selectedBuilding = useSelector(
@@ -47,13 +49,19 @@ const BuildingForm = ({
     closeBuildingModal();
   };
 
+  useEffect(() => {
+    return () => {
+      dispatch(setEditFormMode(true));
+    };
+  }, []);
+
   if (!selectedBuilding && editMode) {
     return <Alert message="Error Text" type="error" closable={true} banner />;
   }
 
   return (
     <Form
-      initialValues={selectedBuilding}
+      initialValues={editMode ? selectedBuilding : undefined}
       form={form}
       layout="vertical"
       onFinish={onFinish}
@@ -65,7 +73,7 @@ const BuildingForm = ({
             label="Building Name"
             rules={[
               {
-                required: editMode,
+                required: !editMode,
                 message: 'Please input the building name',
               },
             ]}
@@ -76,7 +84,9 @@ const BuildingForm = ({
           <Form.Item
             name="street"
             label="Street"
-            rules={[{ required: editMode, message: 'Please input the street' }]}
+            rules={[
+              { required: !editMode, message: 'Please input the street' },
+            ]}
           >
             <Input value={selectedBuilding?.street} />
           </Form.Item>
@@ -86,7 +96,7 @@ const BuildingForm = ({
             label="Number"
             rules={[
               {
-                required: editMode,
+                required: !editMode,
                 message: 'Please input the building number',
               },
             ]}
@@ -102,7 +112,7 @@ const BuildingForm = ({
             name="postalCode"
             label="Postal Code"
             rules={[
-              { required: editMode, message: 'Please input the postal code' },
+              { required: !editMode, message: 'Please input the postal code' },
 
               {
                 pattern: POSTAL_CODE_PATTERN,
@@ -116,7 +126,7 @@ const BuildingForm = ({
           <Form.Item
             name="city"
             label="City"
-            rules={[{ required: editMode, message: 'Please input the city' }]}
+            rules={[{ required: !editMode, message: 'Please input the city' }]}
           >
             <Input value={selectedBuilding?.city} />
           </Form.Item>
@@ -125,7 +135,7 @@ const BuildingForm = ({
             name="country"
             label="Country"
             rules={[
-              { required: editMode, message: 'Please input the country' },
+              { required: !editMode, message: 'Please input the country' },
             ]}
           >
             <Input value={selectedBuilding?.country} />
@@ -134,7 +144,7 @@ const BuildingForm = ({
           <Form.Item
             name="price"
             label="Price"
-            rules={[{ required: editMode, message: 'Please input the price' }]}
+            rules={[{ required: !editMode, message: 'Please input the price' }]}
           >
             <InputNumber
               value={selectedBuilding?.price}
@@ -148,7 +158,7 @@ const BuildingForm = ({
             name="description"
             label="Description"
             rules={[
-              { required: editMode, message: 'Please provide a description' },
+              { required: !editMode, message: 'Please provide a description' },
             ]}
           >
             <TextArea value={selectedBuilding?.description} rows={3} />
@@ -158,7 +168,7 @@ const BuildingForm = ({
             name="color"
             label="Marker Color"
             rules={[
-              { required: editMode, message: 'Please select a marker color' },
+              { required: !editMode, message: 'Please select a marker color' },
             ]}
           >
             <Select

@@ -1,11 +1,14 @@
-import { Layout, Modal, Tabs } from 'antd';
+import { Layout, Modal, Tabs, FloatButton } from 'antd';
+import { PlusCircleOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import BuildingList from './components/BuildingList';
 import BuildingsMap from './components/BuildingsMap/BuildingsMap';
 import BuildingForm from './components/BuildingForm';
 import { RootState } from './store';
-import { closeBuildingModal } from './features/modalSlice';
+import { closeBuildingModal, showBuildingModal } from './features/modalSlice';
+import { setEditFormMode } from './features/formModeSlice';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -16,8 +19,19 @@ const App = () => {
   const isOpenBuildingModal = useSelector(
     (state: RootState) => state.modalReducer.isOpen
   );
+  const isEditForm = useSelector(
+    (state: RootState) => state.formModeReducer.isEditMode
+  );
   return (
     <Layout>
+      <FloatButton
+        onClick={() => {
+          dispatch(setEditFormMode(false));
+          dispatch(showBuildingModal());
+        }}
+        icon={<PlusCircleOutlined />}
+        type="primary"
+      />
       <Content>
         <Modal
           open={isOpenBuildingModal}
@@ -28,6 +42,7 @@ const App = () => {
           style={{ maxWidth: '600px' }}
         >
           <BuildingForm
+            editMode={isEditForm}
             closeBuildingModal={() => dispatch(closeBuildingModal())}
           />
         </Modal>
