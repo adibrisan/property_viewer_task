@@ -2,7 +2,6 @@ import {
   Alert,
   Row,
   Col,
-  Modal,
   Form,
   Input,
   InputNumber,
@@ -13,6 +12,7 @@ import { useDispatch } from 'react-redux';
 
 import { POSTAL_CODE_PATTERN } from '../utils/appConstants';
 import { updateBuilding } from '../features/buildingsSlice';
+import { getCoordinatesForAddress } from '../utils/helper';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -38,9 +38,7 @@ const BuildingForm = ({
     setOpen(false);
   };
 
-  // useEffect(() => {
-  //   return form.setFieldsValue(selectedBuilding);
-  // }, []);
+  getCoordinatesForAddress('Iulius Mall Timisoara');
 
   if (!selectedBuilding && editMode) {
     return <Alert message="Error Text" type="error" closable={true} banner />;

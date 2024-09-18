@@ -12,11 +12,11 @@ const App = () => {
     <Layout>
       <Content>
         <Tabs defaultActiveKey="1">
+          <Tabs.TabPane tab="Map View" key="1">
+            <BuildingsMap />
+          </Tabs.TabPane>
           <Tabs.TabPane tab="Building List" key="2">
             <BuildingList />
-          </Tabs.TabPane>
-          <Tabs.TabPane tab="Map View" key="3">
-            <BuildingsMap />
           </Tabs.TabPane>
         </Tabs>
       </Content>

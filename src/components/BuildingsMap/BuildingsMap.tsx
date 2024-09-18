@@ -26,7 +26,10 @@ const MapDisplay = () => {
     <ReactMapGL
       {...viewState}
       onMove={(event: ViewStateChangeEvent) => setViewState(event.viewState)}
-      style={{ width: '100%', height: '100vh' }}
+      style={{
+        width: '100%',
+        height: '100vh',
+      }}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       mapStyle="mapbox://styles/adrianbrisan/cm16fsas2020b01qu9lyv01ar"
     >
@@ -35,7 +38,6 @@ const MapDisplay = () => {
           key={building.id}
           latitude={building.coordinates.latitude}
           longitude={building.coordinates.longitude}
-          offset={[0, -10]}
         >
           <Button
             className={styles.markerBtn}
