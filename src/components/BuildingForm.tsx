@@ -58,7 +58,7 @@ const BuildingForm = ({
     return () => {
       dispatch(setEditFormMode(true));
     };
-  }, []);
+  }, [dispatch]);
 
   if (!selectedBuilding && editMode) {
     return <Alert message="Error Text" type="error" closable={true} banner />;
