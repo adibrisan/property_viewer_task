@@ -7,6 +7,7 @@ import { HomeFilled } from '@ant-design/icons';
 import { RootState } from '../../store';
 import { selectBuildingById } from '../../features/buildingsSlice';
 import { showBuildingModal } from '../../features/modalSlice';
+import { MY_CITY_LOCATION } from '../../utils/appConstants';
 
 import styles from './BuildingsMap.style.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -17,11 +18,7 @@ const BuildingsMap = () => {
     (state: RootState) => state.buildingsReducer.filteredBuildings
   );
 
-  const [viewState, setViewState] = useState({
-    latitude: 45.760696,
-    longitude: 21.226788,
-    zoom: 10,
-  });
+  const [viewState, setViewState] = useState(MY_CITY_LOCATION);
 
   return (
     <ReactMapGL

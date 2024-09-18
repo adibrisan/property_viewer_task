@@ -13,7 +13,7 @@
       "latitude": 45.7489,
       "longitude": 21.2087
     },
-    "color": "#FF5733"
+    "color": "orangered"
   },
   {
     "id": 2,
@@ -29,7 +29,7 @@
       "latitude": 45.7495,
       "longitude": 21.2194
     },
-    "color": "#33FF57"
+    "color": "green"
   },
   {
     "id": 3,
@@ -45,7 +45,7 @@
       "latitude": 45.75,
       "longitude": 21.21
     },
-    "color": "#337FFF"
+    "color": "blue"
   },
   {
     "id": 4,
@@ -61,7 +61,7 @@
       "latitude": 45.7472,
       "longitude": 21.221
     },
-    "color": "#F3C12D"
+    "color": "yellow"
   },
   {
     "id": 5,
@@ -77,6 +77,6 @@
       "latitude": 45.749,
       "longitude": 21.2165
     },
-    "color": "#D24D57"
+    "color": "red"
   }
 ]
