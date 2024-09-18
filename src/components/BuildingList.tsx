@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EditOutlined } from '@ant-design/icons';
 
 import { RootState } from '../store';
-import { setBuildingById } from '../features/buildingsSlice';
+import { selectBuildingById } from '../features/buildingsSlice';
 import { showBuildingModal } from '../features/modalSlice';
 
 const { Text } = Typography;
@@ -24,7 +24,7 @@ const BuildingList = () => {
             <EditOutlined
               style={{ fontSize: '26px', cursor: 'pointer' }}
               onClick={() => {
-                dispatch(setBuildingById(building.id));
+                dispatch(selectBuildingById(building.id));
                 dispatch(showBuildingModal());
               }}
             />

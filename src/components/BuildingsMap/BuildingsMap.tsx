@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { HomeFilled } from '@ant-design/icons';
 
 import { RootState } from '../../store';
-import { setBuildingById } from '../../features/buildingsSlice';
+import { selectBuildingById } from '../../features/buildingsSlice';
 import { showBuildingModal } from '../../features/modalSlice';
 
 import styles from './BuildingsMap.style.css';
@@ -45,7 +45,7 @@ const MapDisplay = () => {
             style={{ backgroundColor: 'transparent', border: 'none' }}
             onClick={() => {
               dispatch(showBuildingModal());
-              dispatch(setBuildingById(building.id));
+              dispatch(selectBuildingById(building.id));
             }}
             icon={
               <HomeFilled
