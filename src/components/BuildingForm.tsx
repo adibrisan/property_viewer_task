@@ -31,14 +31,18 @@ const BuildingForm = ({
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
-  const onFinish = (values: building) => {
-    console.log(values);
-    dispatch(updateBuilding({ ...values, id: selectedBuilding?.id ?? '' }));
+  const onFinish = async (values: building) => {
+    const coordinatesResult = await getCoordinatesForAddress(
+      `${values.street} ${values.postalCode} ${values.city}`
+    );
+    if (coordinatesResult) {
+      const { latitude, longitude } = coordinatesResult;
+      values = { ...values, coordinates: { latitude, longitude } };
+      dispatch(updateBuilding({ ...values, id: selectedBuilding?.id ?? '' }));
+    }
     form.resetFields();
     setOpen(false);
   };
-
-  getCoordinatesForAddress('Iulius Mall Timisoara');
 
   if (!selectedBuilding && editMode) {
     return <Alert message="Error Text" type="error" closable={true} banner />;
@@ -145,31 +149,6 @@ const BuildingForm = ({
             ]}
           >
             <TextArea value={selectedBuilding?.description} rows={3} />
-          </Form.Item>
-
-          <Form.Item
-            label="Latitude"
-            name={['coordinates', 'latitude']}
-            rules={[
-              { required: editMode, message: 'Please input the latitude' },
-            ]}
-          >
-            <InputNumber
-              value={selectedBuilding?.coordinates.latitude}
-              style={{ width: '100%' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Longitude"
-            name={['coordinates', 'longitude']}
-            rules={[
-              { required: editMode, message: 'Please input the longitude' },
-            ]}
-          >
-            <InputNumber
-              value={selectedBuilding?.coordinates.longitude}
-              style={{ width: '100%' }}
-            />
           </Form.Item>
 
           <Form.Item

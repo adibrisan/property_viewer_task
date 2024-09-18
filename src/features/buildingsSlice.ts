@@ -19,7 +19,6 @@ export const buildingsSlice = createSlice({
     },
     updateBuilding: (state, action: PayloadAction<building>) => {
       const index = state.buildings.findIndex(b => b.id === action.payload.id);
-      console.log(index);
       if (index !== -1) {
         state.buildings[index] = action.payload;
       }
