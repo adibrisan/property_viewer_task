@@ -1,4 +1,4 @@
-Welcome to altametrics app code challenge! This challenge was done by Alexandru-Adrian Brisan.
+Welcome to Property viewer app code challenge! This challenge was done by Alexandru-Adrian Brisan.
 
 To install the app dependencies run
   npm install
