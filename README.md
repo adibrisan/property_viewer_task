@@ -1,5 +1,7 @@
 Welcome to Property viewer app code challenge! This challenge was done by Alexandru-Adrian Brisan.
 
+The app can be found at: https://property-viewer-task.vercel.app/
+
 To install the app dependencies run:
   npm install
 
