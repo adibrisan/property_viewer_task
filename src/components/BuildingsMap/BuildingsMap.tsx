@@ -32,7 +32,7 @@ const MapDisplay = () => {
         height: '100vh',
       }}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/adrianbrisan/cm16fsas2020b01qu9lyv01ar"
+      mapStyle={`${process.env.REACT_APP_MAPBOX_STYLE}`}
     >
       {buildings.map(building => (
         <Marker
