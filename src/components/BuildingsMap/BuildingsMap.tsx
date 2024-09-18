@@ -11,7 +11,7 @@ import { showBuildingModal } from '../../features/modalSlice';
 import styles from './BuildingsMap.style.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const MapDisplay = () => {
+const BuildingsMap = () => {
   const dispatch = useDispatch();
   const buildings = useSelector(
     (state: RootState) => state.buildingsReducer.filteredBuildings
@@ -59,4 +59,4 @@ const MapDisplay = () => {
   );
 };
 
-export default MapDisplay;
+export default BuildingsMap;
