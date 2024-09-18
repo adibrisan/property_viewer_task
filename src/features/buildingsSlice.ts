@@ -4,10 +4,12 @@ import mockedBuildings from '../data/buildings.json';
 
 interface BuildingsState {
   buildings: building[];
+  selectedBuilding?: building;
 }
 
 const initialState: BuildingsState = {
   buildings: mockedBuildings,
+  selectedBuilding: mockedBuildings[0],
 };
 
 export const buildingsSlice = createSlice({
@@ -23,8 +25,15 @@ export const buildingsSlice = createSlice({
         state.buildings[index] = action.payload;
       }
     },
+    setBuildingById: (state, action: PayloadAction<number | string>) => {
+      const building = state.buildings.find(b => b.id === action.payload);
+      if (building) {
+        state.selectedBuilding = building;
+      }
+    },
   },
 });
 
-export const { addBuilding, updateBuilding } = buildingsSlice.actions;
+export const { addBuilding, updateBuilding, setBuildingById } =
+  buildingsSlice.actions;
 export default buildingsSlice.reducer;

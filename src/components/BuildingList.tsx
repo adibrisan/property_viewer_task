@@ -1,12 +1,15 @@
 import { Row, Col, Card, List, Typography, Space } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditOutlined } from '@ant-design/icons';
 
 import { RootState } from '../store';
+import { setBuildingById } from '../features/buildingsSlice';
+import { showBuildingModal } from '../features/modalSlice';
 
 const { Text } = Typography;
 
 const BuildingList = () => {
+  const dispatch = useDispatch();
   const buildings = useSelector(
     (state: RootState) => state.buildingsReducer.buildings
   );
@@ -18,7 +21,13 @@ const BuildingList = () => {
         <List.Item
           style={{ padding: '20px' }}
           extra={
-            <EditOutlined style={{ fontSize: '26px', cursor: 'pointer' }} />
+            <EditOutlined
+              style={{ fontSize: '26px', cursor: 'pointer' }}
+              onClick={() => {
+                dispatch(setBuildingById(building.id));
+                dispatch(showBuildingModal());
+              }}
+            />
           }
         >
           <Card style={{ width: '100%', marginRight: '20px' }}>

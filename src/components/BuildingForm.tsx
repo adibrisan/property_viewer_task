@@ -8,26 +8,29 @@ import {
   Button,
   Select,
 } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { POSTAL_CODE_PATTERN } from '../utils/appConstants';
 import { updateBuilding } from '../features/buildingsSlice';
 import { getCoordinatesForAddress } from '../utils/helper';
+import { RootState } from '../store';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 interface IBuildingForm {
-  selectedBuilding?: building;
-  setOpen: (open: boolean) => void;
   editMode?: boolean;
+  closeBuildingModal: () => void;
 }
 
 const BuildingForm = ({
-  selectedBuilding,
-  setOpen,
   editMode = false,
+  closeBuildingModal,
 }: IBuildingForm) => {
+  const selectedBuilding = useSelector(
+    (state: RootState) => state.buildingsReducer.selectedBuilding
+  );
+
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
@@ -41,7 +44,7 @@ const BuildingForm = ({
       dispatch(updateBuilding({ ...values, id: selectedBuilding?.id ?? '' }));
     }
     form.resetFields();
-    setOpen(false);
+    closeBuildingModal();
   };
 
   if (!selectedBuilding && editMode) {
@@ -179,7 +182,7 @@ const BuildingForm = ({
         >
           Submit
         </Button>
-        <Button onClick={() => setOpen(false)}>Cancel</Button>
+        <Button onClick={closeBuildingModal}>Cancel</Button>
       </Form.Item>
     </Form>
   );

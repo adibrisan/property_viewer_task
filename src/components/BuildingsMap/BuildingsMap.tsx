@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import ReactMapGL, { Marker, ViewStateChangeEvent } from 'react-map-gl';
-import { useSelector } from 'react-redux';
-import { Button, Modal } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'antd';
 import { HomeFilled } from '@ant-design/icons';
 
 import { RootState } from '../../store';
-import BuildingForm from '../BuildingForm';
+import { setBuildingById } from '../../features/buildingsSlice';
+import { showBuildingModal } from '../../features/modalSlice';
 
 import styles from './BuildingsMap.style.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MapDisplay = () => {
+  const dispatch = useDispatch();
   const buildings = useSelector(
     (state: RootState) => state.buildingsReducer.buildings
   );
@@ -19,8 +21,6 @@ const MapDisplay = () => {
     longitude: 21.226788,
     zoom: 10,
   });
-  const [isOpenBuildingModal, setIsOpenBuildingModal] = useState(false);
-  const [selectedBuilding, setSelectedBuilding] = useState<building>();
 
   return (
     <ReactMapGL
@@ -43,8 +43,8 @@ const MapDisplay = () => {
             className={styles.markerBtn}
             style={{ backgroundColor: 'transparent', border: 'none' }}
             onClick={() => {
-              setIsOpenBuildingModal(true);
-              setSelectedBuilding(building);
+              dispatch(showBuildingModal());
+              dispatch(setBuildingById(building.id));
             }}
             icon={
               <HomeFilled
@@ -54,19 +54,6 @@ const MapDisplay = () => {
           />
         </Marker>
       ))}
-      <Modal
-        open={isOpenBuildingModal}
-        onCancel={() => setIsOpenBuildingModal(false)}
-        width="90%"
-        footer={null}
-        destroyOnClose={true}
-        style={{ maxWidth: '600px' }}
-      >
-        <BuildingForm
-          selectedBuilding={selectedBuilding}
-          setOpen={setIsOpenBuildingModal}
-        />
-      </Modal>
     </ReactMapGL>
   );
 };
