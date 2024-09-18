@@ -14,7 +14,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const MapDisplay = () => {
   const dispatch = useDispatch();
   const buildings = useSelector(
-    (state: RootState) => state.buildingsReducer.buildings
+    (state: RootState) => state.buildingsReducer.filteredBuildings
   );
 
   const [viewState, setViewState] = useState({

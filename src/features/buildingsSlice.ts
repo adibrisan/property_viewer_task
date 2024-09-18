@@ -4,11 +4,13 @@ import mockedBuildings from '../data/buildings.json';
 
 interface BuildingsState {
   buildings: building[];
+  filteredBuildings: building[];
   selectedBuilding?: building;
 }
 
 const initialState: BuildingsState = {
   buildings: mockedBuildings,
+  filteredBuildings: mockedBuildings,
   selectedBuilding: mockedBuildings[0],
 };
 
@@ -31,9 +33,19 @@ export const buildingsSlice = createSlice({
         state.selectedBuilding = building;
       }
     },
+    filterBuildings: (state, action: PayloadAction<string>) => {
+      const searchText = action.payload.toLowerCase();
+      if (searchText) {
+        state.filteredBuildings = state.buildings.filter(building =>
+          building.name.toLowerCase().includes(searchText)
+        );
+      } else {
+        state.filteredBuildings = state.buildings;
+      }
+    },
   },
 });
 
-export const { addBuilding, updateBuilding, setBuildingById } =
+export const { addBuilding, updateBuilding, setBuildingById, filterBuildings } =
   buildingsSlice.actions;
 export default buildingsSlice.reducer;

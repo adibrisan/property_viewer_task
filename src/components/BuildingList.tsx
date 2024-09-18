@@ -11,7 +11,7 @@ const { Text } = Typography;
 const BuildingList = () => {
   const dispatch = useDispatch();
   const buildings = useSelector(
-    (state: RootState) => state.buildingsReducer.buildings
+    (state: RootState) => state.buildingsReducer.filteredBuildings
   );
 
   return (

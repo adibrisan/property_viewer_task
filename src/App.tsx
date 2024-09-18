@@ -1,9 +1,10 @@
-import { Layout, Tabs, Tooltip } from 'antd';
+import { Input, Layout, Tabs, Tooltip } from 'antd';
 
 import BuildingList from './components/BuildingList';
 import BuildingsMap from './components/BuildingsMap/BuildingsMap';
 import AddBuildingButton from './components/AddBuildingButton';
 import BuildingModal from './components/BuildingModal';
+import SearchInput from './components/SearchInput';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -17,7 +18,11 @@ const App = () => {
       </Tooltip>
       <Content>
         <BuildingModal />
-        <Tabs defaultActiveKey="1">
+        <Tabs
+          defaultActiveKey="1"
+          tabBarExtraContent={<SearchInput />}
+          tabBarStyle={{ padding: '0 20px' }}
+        >
           <Tabs.TabPane tab="Map View" key="1">
             <BuildingsMap />
           </Tabs.TabPane>
