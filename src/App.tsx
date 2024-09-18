@@ -1,4 +1,4 @@
-import { Input, Layout, Tabs, Tooltip } from 'antd';
+import { Layout, Tabs, Tooltip } from 'antd';
 
 import BuildingList from './components/BuildingList';
 import BuildingsMap from './components/BuildingsMap/BuildingsMap';
